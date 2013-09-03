@@ -40,7 +40,7 @@
                     <h1>better workflow</h1>
                     <h3>Automatizando tarefas</h3>
                     <p>
-                        <small>por <a href="http://carlosroberto.name">Carlos Roberto</a> / <a href="http://twitter.com/carlosrberto">@carlosrberto</a></small>
+                        <small>por <a href="http://carlosroberto.name">Carlos R. G. Junior</a> / <a href="http://twitter.com/carlosrberto">@carlosrberto</a></small>
                     </p>
                 </section>
 
@@ -50,7 +50,7 @@
                         <li>Elimine tarefas repetitivas (<code>don't repeat yourself</code>)</li>
                         <li>Evite problemas (<code>copy &amp; paste</code>)</li>
                         <li>Seja consistente (<code>don't reinvent the wheel</code>)</li>
-                        <li>Viva em harmonia com outros desenvolvedores</li>
+                        <li>Perca seu tempo com o que importa, ou seja programar!</li>
                     </ul>
                 </section>
 
@@ -61,9 +61,6 @@
 
                 <section>
                     <h2>Exemplo 1</h2>
-                </section>
-
-                <section>
                     <p>
                         Desenvolvedor X vai dar manutenção/continuar
                         o projeto inciado pelo desenvolvedor Y e descobre
@@ -74,7 +71,7 @@
                 <section>
                     <p>
                         Após horas investigando e muitos <code>undefined</code>
-                        no Firebug o desenvolvedor X vai seguir os seguintes
+                        no Firebug <br> o desenvolvedor X vai seguir os seguintes
                         passos:
                         <br>
                         <br>
@@ -84,7 +81,7 @@
                         <li class="fragment">Procurar pela versão no código fonte</li>
                         <li class="fragment">Ir para o site da jQuery e procurar pelas novas versões</li>
                         <li class="fragment">Substiuir a biblioteca na applicação</li>
-                        <li class="fragment">Rezar para que funcione sem conflitos</li>
+                        <li class="fragment">Rezar para que tudo funcione sem conflitos</li>
                     </ul>
                 </section>
 
@@ -102,7 +99,7 @@
                     <ul>
                         <li>Procura no google: <code>"select plugin jquery"</code></li>
                         <li>Seleciona <code>1</code> entre <code>N</code> resultados</li>
-                        <li>Não sabe se é compativel com sua jQuery</li>
+                        <li>Não sabe se é compativel com sua versão da jQuery</li>
                         <li>Perde 1/2 hora para aplicar e descobre que não funciona com <code>jQuery >= 1.9</code> </li>
                     </ul>
                 </section>
@@ -134,8 +131,7 @@
                 </section>
 
                 <section>
-                    <h1>BOWER</h1>
-                    <h2>A package manager for the web</h2>
+                    <img src="img/bower_site.png" alt="" style="border:0">
                     <p><a href="http://bower.io">http://bower.io</a></p>
                 </section>
 
@@ -159,16 +155,16 @@
 
                 <section>
                     <p><code>bower search</code></p>
-                    <img src="img/bower_search.png" alt="bower search">
+                    <img src="img/bower_search.png" alt="">
                 </section>
 
                 <section>
                     <p><code>bower help</code></p>
-                    <img src="img/bower_help.png" alt="bower search">
+                    <img src="img/bower_help.png" alt="">
                 </section>
 
                 <section>
-                    <p><a href="http://bower.io/#defining-a-package"><code>bower.json</code></a></p>
+                    <p><code>bower.json</code></p>
                     <pre class="json"><code>
     {
       "name": "my-app",
@@ -183,21 +179,331 @@
       }
     }
                     </code></pre>
+                    <p><a href="http://bower.io/#defining-a-package">http://bower.io/#defining-a-package</a></p>
                 </section>
 
                 <section>
-                    <p><a href="http://bower.io/#configuration"><code>.bowerrc</code></a></p>
+                    <p><code>.bowerrc</code></p>
                     <pre class="json"><code>
     {
       "directory" : "components"
     }
                     </code></pre>
-
+                    <p><a href="http://bower.io/#configuration">http://bower.io/#configuration</a></p>
                 </section>
 
                 <section>
                     <p><code>bower list</code></p>
-                    <img src="img/bower_list.png" alt="bower search">
+                    <img src="img/bower_list.png" alt="">
+                </section>
+
+                <section>
+                    <h2>Front-End Tasks</h2>
+                    <p>Repetimos muitas tarefas diariamente.</p>
+                    <p>Poucos até tentam "automatizar" de alguma forma.</p>
+                </section>
+
+                <section>
+                    <h2>Minificação de JavaScipt</h2>
+                </section>
+
+                <section>
+                    <h3>Começamos com ferramentas online</h3>
+                    <img src="img/js_compress.png" alt="">
+                </section>
+
+                <section>
+                    <h3>Depois descobrimos algumas CLI</h3>
+                    <pre><code>
+    java -jar yuicompressor-x.y.z.jar file.js file.min.js
+                    </code></pre>
+                    <p>Com o passar do tempo você provavelmente vai criar um</p>
+                    <p><code>app_tasks.sh</code></p>
+                    <p>para guardar seus de scripts de automatização.</p>
+                </section>
+
+                <section>
+                    <h2>Minificação de CSS</h2>
+                    <p>Econtramos mais N ferramentas para fazer o trabalho.</p>
+                    <p>E vamos incrementando nosso <code>app_tasks.sh</code>.</p>
+                </section>
+
+                <section>
+                    <p>Se tivermos alguns amigos usando Windows nosso <code>app_tasks.sh</code> provavelmente pode ganha um irmão <code>app_tasks.bat</code></p>
+                </section>
+
+                <section>
+                    <h2>Otimização de Imagens</h2>
+                </section>
+
+                <section>
+                    <h3>Ferramentas Online</h3>
+                    <img src="img/iopt01.png">
+                </section>
+
+                <section>
+                    <h3>Desktop</h3>
+                    <img src="img/iopt02.png">
+                </section>
+
+                <section>
+                    <h3>CLI</h3>
+                    <pre><code>
+    jpegtran source.jpg dest.jpg
+                    </code></pre>
+                    <pre><code>
+    optipng source.jpg dest.jpg
+                    </code></pre>
+                    <p>Mais algumas "tasks" para nosso <code>app_tasks.sh</code></p>
+                </section>
+
+                <section>
+                    <h3>Mais necessidades vão surgindo</h3>
+                    <ul>
+                        <li>Verificação de erros (<code>jshint</code>)</li>
+                        <li>Testes (jasmine, mocha, qunit)</li>
+                        <li>Servidor HTTP (<code>python -m SimpleHTTPServer</code>)</li>
+                        <li>etc</li>
+                        <li>etc...</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Auto Refresh</h2>
+                    <p>
+                        <code>(cmd+s) + (cmd+tab) + (cmd+r) + (cmd+r)...</code>
+                        <br>
+                        <br>
+                    </p>
+
+                    <p>(2x365)/2 = 12 minutos / ano</p>
+                    <p>(100*12)/60 = 20 horas / ano</p>
+                </section>
+
+                <section>
+                    <img src="img/livereload.png" alt="" style="border:0">
+                    <h2>LiveReload.app</h2>
+                    <p>É bom mas não é perfeito :(</p>
+                </section>
+
+                <section>
+                    <h3>No final das contas você acaba usando</h3>
+                    <ul>
+                        <li><strong>N</strong> ferramentas de CLI</li>
+                        <li>Ferramentas online</li>
+                        <li>Aplicações desktop</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>E seu projeto fica</h3>
+                    <ul>
+                        <li>Sem organização</li>
+                        <li>Inconsistente</li>
+                        <li>Sem padrão</li>
+                        <li>Difícil de manter</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Como melhorar tudo isso?</h2>
+                </section>
+
+                <section>
+                    <img src="img/grunt_site.png" alt="" style="border:0">
+                    <p><a href="http://gruntjs.com/getting-started">http://gruntjs.com/getting-started</a></p>
+                </section>
+
+                <section>
+                    <p><code>npm install -g grunt</code></p>
+                </section>
+
+                <section>
+                    <h2>Quais as vantagens do Grunt?</h2>
+                    <ul>
+                        <li>Fácil de aprender</li>
+                        <li>Extensível</li>
+                        <li>Consistente</li>
+                        <li>Plugins</li>
+                        <li>Multiplataforma</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <p>package.json</p>
+                    <pre class="json"><code>
+    {
+      "name": "my-app-name",
+      "version": "1.0.0",
+      "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-contrib-compass": "~0.4.1",
+        "grunt-contrib-watch": "~0.5.1",
+        "grunt-contrib-jshint": "~0.6.1",
+        "grunt-contrib-imagemin": "~0.1.4",
+        "grunt-contrib-clean": "~0.5.0",
+        "grunt-notify": "~0.2.7",
+        "grunt-shell": "~0.3.1"
+      }
+    }
+                    </code></pre>
+
+                    <p>Instalando as dependências</p>
+                    <pre class="shell"><code>
+    npm install
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p>setup básico</p>
+                    <pre class="shell"><code>
+    npm init # cria um package.json
+                    </code></pre>
+
+                    <pre class="shell"><code>
+    npm install grunt --save-dev
+                    </code></pre>
+
+                    <pre class="shell"><code>
+    npm install grunt-plugin-name --save-dev
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p><code>Gruntfile.js</code></p>
+                    <pre class="javascript"><code style="max-height:450px">
+    module.exports = function(grunt) {
+
+        grunt.initConfig({
+            // load package info
+            pkg: grunt.file.readJSON('package.json'),
+
+            taskName: {
+                // task options
+            }
+        });
+
+        grunt.loadNpmTasks('grunt-plugin-name');
+
+        grunt.registerTask('default', ['task1', 'task2', 'task3']);
+
+    };
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p><code>grunt</code></p>
+                    <pre class="javascript"><code>
+    # roda a task default
+    grunt
+
+    # roda a task especifica
+    grunt taskName
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Centenas de plugins</h2>
+                    <p><a href="http://gruntjs.com/plugins">http://gruntjs.com/plugins</a></p>
+                    <p>Se não encontrar um, faça e contribua!</p>
+                </section>
+
+                <section>
+                    <p><code>grunt-contrib-jshint</code></p>
+                    <pre class="javascript"><code>
+    jshint: {
+        app: ['Gruntfile.js', 'js/app/**/*.js']
+        admin: ['admin/**/*.js']
+    },
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p><code>grunt-contrib-imagemin</code></p>
+                    <pre class="javascript"><code style="max-height:450px">
+    imagemin: {
+        jpg: {
+            options: {
+                progressive: false
+            },
+
+            files: [
+                {
+                    expand: true,
+                    cwd: 'django/static/img',
+                    src: ['**/*.jpg'],
+                    dest: 'django/static/img',
+                    ext: '.jpg'
+                }
+            ]
+        }
+    },
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p><code>grunt-contrib-watch</code></p>
+                    <pre class="javascript"><code style="max-height:600px">
+    watch: {
+        scss: {
+            files: [
+                'compass/source/**/*.scss',
+                'compass/config.rb',
+                'django/static/img/sprites/**/*.png'
+            ],
+            tasks: ['compass'],
+
+            options: {
+                atBegin: true
+            }
+        },
+
+        livereload: {
+            files: [
+                'django/static/css/**/*.css',
+                'django/app/**/templates/**/*.html',
+                'django/static/js/app/**/*.js'
+            ],
+            options: {
+                livereload: true
+            }
+        },
+
+        js: {
+            files: ['<%= jshint.all %>'],
+            tasks: ['jshint']
+        }
+    }
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p><code>grunt-contrib-qunit</code></p>
+                    <p><code>grunt-contrib-jasmine</code></p>
+                    <br>
+                    <img src="img/phanthom.png" alt="" style="border:0">
+                </section>
+
+                <section>
+                    <h2>E muito mais!</h2>
+                    <ul>
+                        <li>grunt-contrib-uglify</li>
+                        <li>grunt-contrib-concat</li>
+                        <li>grunt-contrib-cssmin</li>
+                        <li>grunt-contrib-connect</li>
+                        <li>grunt-contrib-compass</li>
+                        <li>grunt-inline-css</li>
+                        <li>grunt-favicons</li>
+                        <li>grunt-ftp-deploy</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <img src="img/yoman.png" alt="">
+                </section>
+
+                <section>
+                    <h2>Obrigado!</h2>
                 </section>
 
             </div>
@@ -213,7 +519,7 @@
             // https://github.com/hakimel/reveal.js#configuration
             Reveal.initialize({
                 controls: true,
-                progress: true,
+                progress: false,
                 history: true,
                 center: true,
 
@@ -227,8 +533,8 @@
                     { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                     { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!location.search.match(/remote/) } }
                 ]
             });
 
