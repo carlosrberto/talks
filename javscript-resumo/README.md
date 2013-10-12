@@ -1,7 +1,7 @@
-# Better Workflow
+# JavaScript
 
-## Automatizando Tarefas
+## Resumo sobre Funções, Objetos e Contextos
 
-Slides da minha palestra sobre otimização de tarefas no desenvolvimento utilizando ferramentas como Bower, Grunt e Yoman
+Slides resumindo o funcionamento funções, objetos e contextos em JavaScript
 
-[Veja os slides](http://carlosroberto.name/talks/better-workflow)
+[Veja os slides](http://carlosroberto.name/talks/javascript-resumo)
