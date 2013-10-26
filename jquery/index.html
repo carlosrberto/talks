@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>jQuery - write Less, do more</title>
+
+        <meta name="description" content="jQuery - write Less, do more">
+        <meta name="author" content="Carlos Roberto Gomes Junior">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section data-background="#fff">
+                    <img src="img/jquery_logo.png" alt="" style="background: none; border: 0; -webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;">
+                    <p>
+                        <small>por <a href="http://carlosroberto.name">Carlos R. G. Junior</a> / <a href="http://twitter.com/carlosrberto">@carlosrberto</a></small>
+                    </p>
+                </section>
+
+                <section>
+                    <h2>2006</h2>
+                    <p>Desenvolvida por <a href="http://ejohn.org/" target="_blank">John Resig</a></p>
+                    <img src="img/jquery_2006.png" alt="" width="70%">
+                </section>                
+
+                <section>
+                    <p>É uma bibliotéca para manipulação do DOM <br>e outras tarefas de JavaScript no Browser</p>
+                </section>
+
+                <section>
+                    <p>Lembre-se, é uma Bibliotéca, não um Framework</p>
+                </section>     
+
+                <section>
+                    <h2>Outras bibliotécas semelhantes</h2>
+                    <ul>
+                        <li><a href="http://mootools.net/">Mootools</a></li>
+                        <li><a href="http://prototypejs.org/">Prototype</a></li>
+                        <li><a href="http://yuilibrary.com/">YUI</a></li>
+                        <li><a href="http://dojotoolkit.org/">dojo</a></li>
+                    </ul>
+                </section>                                
+
+                <section>
+                    <h2>Pricipal Vantagem</h2>
+                </section>                                
+                
+                <section>
+                    <p>Garantia de JavaScript CROSS-BROWSER</p>
+                    <img src="img/support_jquery.png" alt="">
+                </section>
+
+                <section>
+                    <p>Grande quantidade de Plugins</p>
+                    <img src="img/plugins.png" alt="">
+                </section>                
+                    
+                <section>
+                    <h2>Como jQuery podemos</h2>
+                    <ul>
+                        <li>Acessar elementos</li>
+                        <li>Manipulação elementos</li>
+                        <li>Fazer animações</li>
+                        <li>Escutar eventos</li>
+                        <li>Criar eventos</li>
+                        <li>Fazer requisições Ajax</li>
+                    </ul>
+                </section>                
+
+                <section>
+                    <p>Como começar?</p>
+                    <pre class="html"><code contenteditable>
+    <script src="js/libs/jquery.js"></script>
+                </code></pre>                                   
+                </section>
+
+                <section>
+                    <pre class="javascript"><code contenteditable>
+    jQuery(document).ready(function(){
+        var minhasDivs = jQuery('div');
+    });
+                </code></pre>
+                </section>
+
+                <section>
+                    <p><code>jQuery === $</code></p>
+                    <pre style="font-size: 18px;" class="javascript"><code contenteditable>
+    // $(document).ready(fn) executa o código apenas quando o DOM estiver carregado
+    $(document).ready(function(){
+        var minhasDivs = $('div');
+    });
+                </code></pre>
+
+                    <pre style="font-size: 18px;" class="javascript"><code contenteditable>
+    // $(fn) é um alias de $(document).ready(fn)
+    $(function(){
+        var minhasDivs = $('div');
+    });
+                </code></pre>                                    
+                </section>
+
+                <section>
+                    <p>
+                        <code>$('seletor')</code> Retorna um <code>jQueryObject</code> 
+                        <br>
+                        e não um <code>ElementNode</code> ou <code>NodeList</code>
+                    </p>
+                </section>
+
+                <section>
+                    <p>Comparações</p>
+                    <pre class="javascript"><code contenteditable>
+        var elemento1 = document.getElementById('container');
+        var elemento2 = $('#container');
+
+        var elemento3 = document.getElementsByClassName('box');
+        var elemento4 = $('.box');
+        
+        var elemento5 = document.getElementsByTagName('p');
+        var elemento5 = $('p');
+
+        var elementos1 = document.querySelectorAll('#container p, a, .box');
+        var elementos2 = $('#container p, a, .box');
+                </code></pre>                        
+                </section> 
+
+                <section>
+                    <p>Eventos</p>
+                    <pre class="javascript"><code contenteditable>
+    // IE
+    document.getElementById('button').attachEvent('onclick', function(){
+        alert("Clicado!");
+    });
+    
+    // padrão
+    document.getElementById('button').addEventListener('click', function(){
+        alert("Clicado!");
+    });
+    
+    // jQuery
+    $('#button').on('click', function(){
+        alert("Clicado!");
+    });
+                </code></pre>                        
+                </section>  
+
+                <section>
+                    <p>Modificar CSS</p>
+                    <pre class="javascript"><code contenteditable>
+    // DOM
+    document.getElementById('button').style.color = '#ccc';
+    document.getElementById('button').style.backgroundColor = '#fafafa';
+    document.getElementById('button').style.border = '1px solid #ddd';
+    
+    // jQuery
+    $('#button').css({
+        'color': '#ccc',
+        'backgroundColor' : '#fafafa',
+        border: '#ddd'
+    });
+                </code></pre>                        
+                </section>    
+
+                <section>
+                    <p>Adiconando Classes</p>
+                    <pre class="javascript"><code contenteditable>
+    // DOM
+    document.getElementById('button').classList.add('class1');
+    document.getElementById('button').classList.add('class2');
+    document.getElementById('button').classList.add('class3');
+    
+    // jQuery
+    $('#button').addClass('class1 class2 class3');
+
+                </code></pre>                        
+                </section>     
+
+                <section>
+                    <p>Efeitos/Animações</p>
+                    <pre class="javascript"><code contenteditable>
+    $('selector').animate({
+        propriedadeCSS1: 'valor1',
+        propriedadeCSS2: 'valor2'
+    },1000, 'easeName', callback);
+
+    $('selector').fadeIn(tempo, callback);
+    $('selector').fadeOut(tempo, callback);
+    $('selector').fadeTo(tempo, opacidade, callback);
+    $('selector').slideDown(tempo, callback);
+    $('selector').slideUp(tempo, callback);
+
+                </code></pre>   
+
+                    <pre class="javascript"><code contenteditable>
+    $('selector').fadeIn(tempo, callback);
+
+    $('selector').fadeOut(tempo, callback);
+
+    $('selector').fadeTo(tempo, opacidade, callback);
+
+    $('selector').slideDown(tempo, callback);
+
+    $('selector').slideUp(tempo, callback);
+                </code></pre>                                        
+                </section>                                                                                
+
+                <section>
+                    <p>Ajax</p>
+                    <pre class="javascript"><code contenteditable>
+    $.get('/caminho-da-url/', function(data){
+        console.log(data);
+    });
+
+    $.post('/caminho-da-url/', function(data){
+        console.log(data);
+    });
+
+    $.getScript('/caminho-da-script/', function(){
+        console.log('script carregado');
+    });
+
+    $.ajax({ /* opções */ });
+                </code></pre>
+                </section>                
+
+                <section>
+                    <p>Criando Plugins</p>
+<pre class="javascript"><code contenteditable>
+    (function($){
+        $.fn.turnallred = function() {
+            this.css('color', 'red');
+        }
+    })(jQuery);
+
+    $('p, li, a').turnallred();
+                </code></pre>                    
+                </section>     
+
+                <section>
+                    <p>E muito mais!</p>                                               
+                    <p><a href="http://api.jquery.com/">http://api.jquery.com/</a></p>
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: false,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!location.search.match(/remote/) } }
+                ]
+            });
+
+        </script>
+
+        <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-28337845-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+        </script>
+
+    </body>
+</html>
