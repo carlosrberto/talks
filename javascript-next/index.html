@@ -1,0 +1,391 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>reveal.js</title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/white.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-background-color="#f0db4e">
+                    <h1 style="text-transform: inherit">JavaScript</h1>
+                    <h3>Past, Present and Future</h3>
+                    <p>
+                        <small><a href="http://github.io/carlosrberto">Carlos Roberto Gomes Junior</a> / <a href="http://github.com/carlosrberto">@carlosrberto</a></small>
+                    </p>
+                </section>
+
+
+
+
+
+                <section>
+                    <section>
+                        <h2>Variables & Constants</h2>
+                        <pre><code class="js" data-trim contenteditable>
+function doStuff() {
+    var arr = [1, 2];
+    if(arr.length == 2) {
+        var arrLength = arr.length;
+    }
+    console.log(arrLength);
+}
+
+doStuff(); // 2
+                        </code></pre>
+
+                        <pre class="fragment"><code class="js" data-trim contenteditable>
+function doStuff() {
+    let arr = [1, 2];
+    if(arr.length == 2) {
+        let arrLength = arr.length;
+    }
+    console.log(arrLength);
+}
+
+doStuff(); // Uncaught ReferenceError: arrLength is not defined
+                        </code></pre>
+                    </section>
+
+                    <section >
+                        <pre><code class="js" data-trim contenteditable>
+(function() {
+    var age = 29;
+})();
+console.log(age); // Uncaught ReferenceError: age is not defined
+                        </code></pre>
+
+                        <pre class="fragment"><code class="js" data-trim contenteditable>
+{
+    let age = 29;
+}
+console.log(age); // Uncaught ReferenceError: age is not defined
+                        </code></pre>
+                    </section>
+
+                    <section >
+                    <h2>Constants</h2>
+                        <pre><code class="js" data-trim contenteditable>
+const name = "Carlos";
+                        </code></pre>
+
+                        <pre><code class="js" data-trim contenteditable>
+name = "Hebert"; // Uncaught TypeError: Assignment to constant variable.
+                        </code></pre>
+
+                        <pre><code class="js" data-trim contenteditable>
+let name = "João"; // Uncaught TypeError: Identifier 'age' has already been declared
+                        </code></pre>
+                    </section>
+                </section>
+
+
+
+
+
+
+                <section>
+                    <section>
+                        <h2>Arrow Functions</h2>
+                        <pre><code class="js" data-trim contenteditable>
+function isFirstLetterUpperCase(word) {
+    return (/^[A-Z]/).test(word);
+}
+                        </code></pre>
+
+                        <pre class="fragment"><code class="js" data-trim contenteditable>
+let isFirstLetterUpperCase = function(word) {
+    return (/^[A-Z]/).test(word);
+}
+                        </code></pre>
+
+                        <pre class="fragment"><code class="js" data-trim contenteditable>
+let isFirstLetterUpperCase = (word) => {
+    return (/^[A-Z]/).test(word);
+}
+                        </code></pre>
+
+                        <pre class="fragment"><code class="js" data-trim contenteditable>
+let isFirstLetterUpperCase = word => (/^[A-Z]/).test(word);
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Arrow Functions clean syntax</h2>
+                        <p>Before</p>
+                        <pre><code class="js" data-trim contenteditable>
+let arr = [1, 2, 3, 4];
+arr
+.filter(function(i){
+    return i%2 === 0;
+})
+.map(function(i) {
+    return i+1;
+});
+console.log(arr); // [3, 5]
+                        </code></pre>
+
+                        <p>After</p>
+                        <pre><code class="js" data-trim contenteditable>
+let arr = [1, 2, 3, 4];
+arr
+.filter(i => i%2 === 0)
+.map(i => i+1);
+console.log(arr); // [3, 5]
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Arrow Functions & <code style="text-transform: none;">this</code> context</h3>
+
+                        <pre><code data-trim contenteditable>
+                            <input name="age" type="text" value="29" id="input-age" />
+                        </code></pre>
+
+                        <pre><code data-trim contenteditable data-noescape>
+let inputHandler = {
+    init: function() {
+        this.borderColor = "red";
+        this.input = document.querySelector("input-age");
+
+        this.input.addEventListener("click", function(event) {
+            event.target.style.borderColor = this.borderColor;
+        });
+    }
+}
+inputHandler.init();
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Arrow Functions & <code style="text-transform: none;">this</code> context</h3>
+
+                        <pre><code data-trim contenteditable>
+                            <input name="age" type="text" value="29" id="input-age" />
+                        </code></pre>
+
+                        <pre><code data-trim contenteditable data-noescape>
+let inputHandler = {
+    init: function() {
+        this.borderColor = "red";
+        this.input = document.querySelector("input-age");
+        <mark>let _this = this;</mark>
+        this.input.addEventListener("click", function(event) {
+            event.target.style.borderColor = <mark>_this.borderColor</mark>;
+        });
+    }
+}
+inputHandler.init();
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Arrow Functions & <code style="text-transform: none;">this</code> context</h3>
+
+                        <pre><code data-trim contenteditable>
+                            <input name="age" type="text" value="29" id="input-age" />
+                        </code></pre>
+
+                        <pre><code data-trim contenteditable data-noescape>
+let inputHandler = {
+    init: function() {
+        this.borderColor = "red";
+        this.input = document.querySelector("input-age");
+        this.input.addEventListener("click", function(event) {
+            event.target.style.borderColor = this.borderColor;
+        }<mark>.bind(this)</mark>);
+    }
+}
+inputHandler.init();
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h3>Arrow Functions & <code style="text-transform: none;">this</code> context</h3>
+
+                        <pre><code data-trim contenteditable>
+                            <input name="age" type="text" value="29" id="input-age" />
+                        </code></pre>
+
+                        <pre><code data-trim contenteditable data-noescape>
+let inputHandler = {
+    init: function() {
+        this.borderColor = "red";
+        this.input = document.querySelector("input-age");
+<mark>
+        this.input.addEventListener("click", event => {
+            event.target.style.borderColor = this.borderColor;
+        });
+</mark>
+    }
+}
+inputHandler.init();
+                        </code></pre>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h2>Destructuring</h2>
+                        <pre><code class="js" data-trim contenteditable>
+let list = [1, 2];
+                        </code></pre>
+
+                        <p>Before</p>
+                        <pre><code class="js" data-trim contenteditable>
+let a = list[0];
+let b = list[1];
+                        </code></pre>
+
+                        <div class="fragment">
+                            <p>After</p>
+                            <pre><code class="js" data-trim contenteditable>
+let [a, b] = list;
+                            </code></pre>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Destructuring</h2>
+                        <pre><code class="js" data-trim contenteditable>
+let user = {
+    name: "Carlos",
+    location: "Ribeirão Preto"
+};
+                        </code></pre>
+                        <p>Before</p>
+                        <pre><code class="js" data-trim contenteditable>
+let name = user.name;
+let location = user.location;
+                        </code></pre>
+                        <div class="fragment">
+                            <p>After</p>
+                            <pre><code class="js" data-trim contenteditable>
+let { name, location } = user;
+                            </code></pre>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Destructuring</h2>
+                        <pre><code class="js" data-trim contenteditable>
+let getCoords() {
+    return {x: 10, y: 20}
+}
+
+let {x, y} = getCoords();
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Destructuring</h2>
+                        <pre><code class="js" data-trim contenteditable>
+
+document.querySelector("#my-input").onChange(({target, keyCode}) => {
+     // event.target
+     // event.keyCode
+     console.log(target.value);
+     console.log(keyCode);
+});
+
+let {x, y} = getCoords();
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Default parameters</h2>
+                    <p>ES5</p>
+                    <pre><code class="js" data-trim contenteditable>
+function f(x, y) {
+  y = y || 12;
+  return x + y;
+}
+f(3) // 15
+                    </code></pre>
+                    <div class="fragment">
+                        <p>ES6</p>
+                        <pre><code class="js" data-trim contenteditable>
+function f(x, y=12) {
+  // y is 12 if not passed (or passed as undefined)
+  return x + y;
+}
+f(3) // 15
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Rest parameters</h2>
+                    <p>ES5</p>
+                    <pre><code class="js" data-trim contenteditable>
+function f(x, y){
+    let args = Array.prototype.slice.apply(arguments, [1, arguments.length]);
+    console.log(x, y, args);
+}
+f(1, 2, 3, 4) // 1 2 [3, 4]
+                    </code></pre>
+                    <div class="fragment">
+                        <p>ES6</p>
+                        <pre><code class="js" data-trim contenteditable>
+function f(x, y, ...args){
+    console.log(x, y, args)
+}
+f(1, 2, 3, 4) // 1 2 [3, 4]
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Spread Operator</h2>
+                    <pre><code class="js" data-trim contenteditable>
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Classes</h2>
+                    <pre><code class="js" data-trim contenteditable>
+                    </code></pre>
+                </section>
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+                width: 1100,
+                height: 700,
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                ]
+            });
+        </script>
+    </body>
+</html>
