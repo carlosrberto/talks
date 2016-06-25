@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <title>reveal.js</title>
+        <title>JavaScript - Past, Present and Future</title>
 
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/white.css">
@@ -27,6 +27,7 @@
                 <section data-background-color="#f0db4e">
                     <h1 style="text-transform: inherit">JavaScript</h1>
                     <h3>Past, Present and Future</h3>
+                    <p>ES5, ES6, ES Next</p>
                     <p>
                         <small><a href="http://github.io/carlosrberto">Carlos Roberto Gomes Junior</a> / <a href="http://github.com/carlosrberto">@carlosrberto</a></small>
                     </p>
@@ -39,58 +40,74 @@
                 <section>
                     <section>
                         <h2>Variables & Constants</h2>
-                        <pre><code class="js" data-trim>
-function doStuff() {
-    var arr = [1, 2];
-    if(arr.length == 2) {
-        var arrLength = arr.length;
-    }
-    console.log(arrLength);
+                        <p><strong><code>let</code></strong> is the new <strong><code>var</code></strong></p>
+                    </section>
+                    <section>
+                        <div>
+                            <p>ES5</p>
+                            <pre><code class="js" data-trim data-noescape>
+var list = [1, 2];
+if(list.length == 2) {
+    var listLength = list.length;
 }
+<span class="fragment">
+console.log(listLength); // 2
+</span>
+                            </code></pre>    
+                        </div>
 
-doStuff(); // 2
-                        </code></pre>
-
-                        <pre class="fragment"><code class="js" data-trim>
-function doStuff() {
-    let arr = [1, 2];
-    if(arr.length == 2) {
-        let arrLength = arr.length;
-    }
-    console.log(arrLength);
+                        <div class="fragment">
+                            <p>ES6</p>
+                            <pre><code class="js" data-trim data-noescape>
+let list = [1, 2];
+if(list.length == 2) {
+    let listLength = list.length;
 }
-
-doStuff(); // Uncaught ReferenceError: arrLength is not defined
-                        </code></pre>
+<span class="fragment">
+console.log(listLength); // Uncaught ReferenceError: arrLength is not defined    
+</span>
+                            </code></pre>                            
+                        </div>
                     </section>
 
-                    <section >
-                        <pre><code class="js" data-trim>
+                    <section>
+                        <div>
+                            <p>ES5</p>
+                            <pre><code class="js" data-trim data-noescape>
 (function() {
     var age = 29;
 })();
-console.log(age); // Uncaught ReferenceError: age is not defined
-                        </code></pre>
+<span class="fragment">
+console.log(age); // Uncaught ReferenceError: age is not defined        
+</span>
+                            </code></pre>                            
+                        </div>
 
-                        <pre class="fragment"><code class="js" data-trim>
+                        <div class="fragment">
+                            <p>ES6</p>
+                            <pre><code class="js" data-trim data-noescape>
 {
     let age = 29;
 }
-console.log(age); // Uncaught ReferenceError: age is not defined
-                        </code></pre>
+<span class="fragment">
+console.log(age); // Uncaught ReferenceError: age is not defined    
+</span>
+                            </code></pre>                            
+                        </div>
                     </section>
 
                     <section >
-                    <h2>Constants</h2>
+                        <h3>Constants</h3>
+                        <p>new <strong><code>const</code></strong> keyword</p>
                         <pre><code class="js" data-trim>
 const name = "Carlos";
                         </code></pre>
 
-                        <pre><code class="js" data-trim>
+                        <pre class="fragment"><code class="js" data-trim>
 name = "Hebert"; // Uncaught TypeError: Assignment to constant variable.
                         </code></pre>
 
-                        <pre><code class="js" data-trim>
+                        <pre class="fragment"><code class="js" data-trim>
 let name = "João"; // Uncaught TypeError: Identifier 'age' has already been declared
                         </code></pre>
                     </section>
@@ -104,6 +121,8 @@ let name = "João"; // Uncaught TypeError: Identifier 'age' has already been dec
                 <section>
                     <section>
                         <h2>Arrow Functions</h2>
+                    </section>
+                    <section>
                         <pre><code class="js" data-trim>
 function isFirstLetterUpperCase(word) {
     return (/^[A-Z]/).test(word);
@@ -128,8 +147,8 @@ let isFirstLetterUpperCase = word => (/^[A-Z]/).test(word);
                     </section>
 
                     <section>
-                        <h2>Arrow Functions clean syntax</h2>
-                        <p>Before</p>
+                        <h3>Clean syntax</h3>
+                        <p>ES5</p>
                         <pre><code class="js" data-trim>
 let arr = [1, 2, 3, 4];
 arr
@@ -142,7 +161,7 @@ arr
 console.log(arr); // [3, 5]
                         </code></pre>
 
-                        <p>After</p>
+                        <p>ES6</p>
                         <pre><code class="js" data-trim>
 let arr = [1, 2, 3, 4];
 arr
@@ -154,7 +173,35 @@ console.log(arr); // [3, 5]
 
                     <section>
                         <h3>Arrow Functions & <code style="text-transform: none;">this</code> context</h3>
+                    </section>
 
+                    <section>
+                        <pre><code data-trim data-noescape>
+function myFn() {
+    // what is this?
+    console.log(this);
+}
+                        </code></pre>                    
+                        <pre><code data-trim data-noescape>
+
+let MyObject = {};
+let myFn2 = = <mark>$.proxy(myFn, MyObject);</mark>
+console.log(myFn2) // MyObject
+                        </code></pre>
+
+                        <pre><code data-trim data-noescape>
+
+function changeContext(fn, context) {
+    return function() {
+        fn.apply(context, arguments);
+    }
+}
+let myFn3 = changeContext(myFn, MyObject);
+console.log(myFn3); // MyObject    
+                        </code></pre>                        
+                    </section>   
+
+                    <section data-transition="slide-in fade-out">
                         <pre><code data-trim>
                             <input name="age" type="text" value="29" id="input-age" />
                         </code></pre>
@@ -172,11 +219,9 @@ let inputHandler = {
 }
 inputHandler.init();
                         </code></pre>
-                    </section>
+                    </section>                    
 
-                    <section>
-                        <h3>Arrow Functions & <code style="text-transform: none;">this</code> context</h3>
-
+                    <section data-transition="fade-in fade-out">
                         <pre><code data-trim>
                             <input name="age" type="text" value="29" id="input-age" />
                         </code></pre>
@@ -196,9 +241,7 @@ inputHandler.init();
                         </code></pre>
                     </section>
 
-                    <section>
-                        <h3>Arrow Functions & <code style="text-transform: none;">this</code> context</h3>
-
+                    <section data-transition="fade-in fade-out">
                         <pre><code data-trim>
                             <input name="age" type="text" value="29" id="input-age" />
                         </code></pre>
@@ -217,9 +260,7 @@ inputHandler.init();
                         </code></pre>
                     </section>
 
-                    <section>
-                        <h3>Arrow Functions & <code style="text-transform: none;">this</code> context</h3>
-
+                    <section data-transition="fade-in fade-out">
                         <pre><code data-trim>
                             <input name="age" type="text" value="29" id="input-age" />
                         </code></pre>
@@ -245,18 +286,22 @@ inputHandler.init();
                 <section>
                     <section>
                         <h2>Destructuring</h2>
+                    </section>
+                    <section>
                         <pre><code class="js" data-trim>
 let list = [1, 2];
                         </code></pre>
 
-                        <p>Before</p>
-                        <pre><code class="js" data-trim>
+                        <div>
+                            <p>ES5</p>
+                            <pre><code class="js" data-trim>
 let a = list[0];
 let b = list[1];
-                        </code></pre>
+                            </code></pre>    
+                        </div>
 
                         <div class="fragment">
-                            <p>After</p>
+                            <p>ES6</p>
                             <pre><code class="js" data-trim>
 let [a, b] = list;
                             </code></pre>
@@ -264,20 +309,19 @@ let [a, b] = list;
                     </section>
 
                     <section>
-                        <h2>Destructuring</h2>
                         <pre><code class="js" data-trim>
 let user = {
     name: "Carlos",
     location: "Ribeirão Preto"
 };
                         </code></pre>
-                        <p>Before</p>
+                        <p>ES5</p>
                         <pre><code class="js" data-trim>
 let name = user.name;
 let location = user.location;
                         </code></pre>
                         <div class="fragment">
-                            <p>After</p>
+                            <p>ES6</p>
                             <pre><code class="js" data-trim>
 let { name, location } = user;
                             </code></pre>
@@ -285,7 +329,6 @@ let { name, location } = user;
                     </section>
 
                     <section>
-                        <h2>Destructuring</h2>
                         <pre><code class="js" data-trim>
 let getCoords() {
     return {x: 10, y: 20}
@@ -295,76 +338,139 @@ let {x, y} = getCoords();
                         </code></pre>
                     </section>
 
-                    <section>
-                        <h2>Destructuring</h2>
+                    <section data-transition="slide-in fade-out">
+                        <pre><code class="js" data-trim>
+
+document.querySelector("#my-input").onChange((event) => {
+     console.log(event.target.value);
+     console.log(event.keyCode);
+});
+                        </code></pre>
+                    </section>
+
+                    <section data-transition="fade-in fade-out">
                         <pre><code class="js" data-trim>
 
 document.querySelector("#my-input").onChange(({target, keyCode}) => {
-     // event.target
-     // event.keyCode
      console.log(target.value);
      console.log(keyCode);
 });
-
-let {x, y} = getCoords();
                         </code></pre>
-                    </section>
+                    </section>                    
                 </section>
 
                 <section>
-                    <h2>Default parameters</h2>
-                    <p>ES5</p>
-                    <pre><code class="js" data-trim>
+                    <section>
+                        <h2>Default parameters</h2>
+                    </section>
+                    
+                    <section>
+                        <p>ES5</p>
+                        <pre><code class="js" data-trim>
 function f(x, y) {
   y = y || 12;
   return x + y;
 }
 f(3) // 15
-                    </code></pre>
-                    <div class="fragment">
-                        <p>ES6</p>
-                        <pre><code class="js" data-trim>
+                        </code></pre>
+                        <div class="fragment">
+                            <p>ES6</p>
+                            <pre><code class="js" data-trim>
 function f(x, y=12) {
   // y is 12 if not passed (or passed as undefined)
   return x + y;
 }
 f(3) // 15
-                        </code></pre>
-                    </div>
+                            </code></pre>
+                        </div>
+                    </section>
                 </section>
 
+
                 <section>
-                    <h2>Rest parameters</h2>
-                    <p>ES5</p>
-                    <pre><code class="js" data-trim>
+                    <section>
+                        <h2>Rest parameters</h2>
+                    </section>
+                    <section>
+                        <p>ES5</p>
+                        <pre><code class="js" data-trim>
 function f(x, y){
     let args = Array.prototype.slice.apply(arguments, [1, arguments.length]);
     console.log(x, y, args);
 }
 f(1, 2, 3, 4) // 1 2 [3, 4]
-                    </code></pre>
-                    <div class="fragment">
-                        <p>ES6</p>
-                        <pre><code class="js" data-trim>
+                        </code></pre>
+                        <div class="fragment">
+                            <p>ES6</p>
+                            <pre><code class="js" data-trim>
 function f(x, y, ...args){
     console.log(x, y, args)
 }
 f(1, 2, 3, 4) // 1 2 [3, 4]
-                        </code></pre>
-                    </div>
+                            </code></pre>
+                        </div>
+                    </section>                    
                 </section>
 
                 <section>
-                    <h2>Spread Operator</h2>
-                    <pre><code class="js" data-trim>
-                    </code></pre>
+                    <section>
+                        <h2>Spread Operator</h2>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+                        </code></pre>                        
+                    </section>                    
                 </section>
 
                 <section>
-                    <h2>Classes</h2>
-                    <pre><code class="js" data-trim>
-                    </code></pre>
-                </section>
+                    <section>
+                        <h2>Template Strings</h2>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+                        </code></pre>                        
+                    </section>                    
+                </section> 
+
+                <section>
+                    <section>
+                        <h3 style="text-transform: inherit">Math + Number + String + Array + Object APIs</h3>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+                        </code></pre>                        
+                    </section>                    
+                </section>                                
+
+                <section>
+                    <section>
+                        <h2>Classes</h2>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+                        </code></pre>                        
+                    </section>                    
+                </section> 
+
+                <section>
+                    <section>
+                        <h2>Promises</h2>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+                        </code></pre>                        
+                    </section>                    
+                </section>   
+                
+                <section>
+                    <section>
+                        <h2>Modules</h2>
+                    </section>
+                    <section>
+                        <pre><code class="js" data-trim>
+                        </code></pre>                        
+                    </section>                    
+                </section>                                                
             </div>
         </div>
 
@@ -387,8 +493,8 @@ f(1, 2, 3, 4) // 1 2 [3, 4]
 
                 // More info https://github.com/hakimel/reveal.js#dependencies
                 dependencies: [
-                    { src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
-                    { src: 'plugin/multiplex/master.js', async: true },
+                    // { src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+                    // { src: 'plugin/multiplex/master.js', async: true },
 
                     { src: 'plugin/markdown/marked.js' },
                     { src: 'plugin/markdown/markdown.js' },
