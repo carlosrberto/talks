@@ -33,8 +33,22 @@
                     </p>
                 </section>
 
+                <section>
+                    <h2 style="text-transform: inherit">ES6, ES7, ES2015, ES2016, ..., ES.Next...</h2>
+                    <p>WTF???</p>
+                    <p>Falar da ecma</p>
+                    <p><a href="https://www.wikiwand.com/en/Ecma_International">https://www.wikiwand.com/en/Ecma_International</a></p>
+                </section>
 
+                <section>
+                    <section>
+                        <h2>Implementation Status</h2>
+                        <p><a href="https://kangax.github.io/compat-table/es6/">https://kangax.github.io/compat-table/es6/</a></p>
+                    </section>
+                    <section data-background-image="img/es_implementation.png">
 
+                    </section>
+                </section>
 
 
                 <section>
@@ -53,7 +67,7 @@ if(list.length == 2) {
 <span class="fragment">
 console.log(listLength); // 2
 </span>
-                            </code></pre>    
+                            </code></pre>
                         </div>
 
                         <div class="fragment">
@@ -64,9 +78,9 @@ if(list.length == 2) {
     let listLength = list.length;
 }
 <span class="fragment">
-console.log(listLength); // Uncaught ReferenceError: arrLength is not defined    
+console.log(listLength); // Uncaught ReferenceError: arrLength is not defined
 </span>
-                            </code></pre>                            
+                            </code></pre>
                         </div>
                     </section>
 
@@ -78,9 +92,9 @@ console.log(listLength); // Uncaught ReferenceError: arrLength is not defined
     var age = 29;
 })();
 <span class="fragment">
-console.log(age); // Uncaught ReferenceError: age is not defined        
+console.log(age); // Uncaught ReferenceError: age is not defined
 </span>
-                            </code></pre>                            
+                            </code></pre>
                         </div>
 
                         <div class="fragment">
@@ -90,9 +104,9 @@ console.log(age); // Uncaught ReferenceError: age is not defined
     let age = 29;
 }
 <span class="fragment">
-console.log(age); // Uncaught ReferenceError: age is not defined    
+console.log(age); // Uncaught ReferenceError: age is not defined
 </span>
-                            </code></pre>                            
+                            </code></pre>
                         </div>
                     </section>
 
@@ -181,7 +195,7 @@ function myFn() {
     // what is this?
     console.log(this);
 }
-                        </code></pre>                    
+                        </code></pre>
                         <pre><code data-trim data-noescape>
 
 let MyObject = {};
@@ -197,9 +211,9 @@ function changeContext(fn, context) {
     }
 }
 let myFn3 = changeContext(myFn, MyObject);
-console.log(myFn3); // MyObject    
-                        </code></pre>                        
-                    </section>   
+console.log(myFn3); // MyObject
+                        </code></pre>
+                    </section>
 
                     <section data-transition="slide-in fade-out">
                         <pre><code data-trim>
@@ -219,7 +233,7 @@ let inputHandler = {
 }
 inputHandler.init();
                         </code></pre>
-                    </section>                    
+                    </section>
 
                     <section data-transition="fade-in fade-out">
                         <pre><code data-trim>
@@ -297,7 +311,7 @@ let list = [1, 2];
                             <pre><code class="js" data-trim>
 let a = list[0];
 let b = list[1];
-                            </code></pre>    
+                            </code></pre>
                         </div>
 
                         <div class="fragment">
@@ -356,14 +370,14 @@ document.querySelector("#my-input").onChange(({target, keyCode}) => {
      console.log(keyCode);
 });
                         </code></pre>
-                    </section>                    
+                    </section>
                 </section>
 
                 <section>
                     <section>
                         <h2>Default parameters</h2>
                     </section>
-                    
+
                     <section>
                         <p>ES5</p>
                         <pre><code class="js" data-trim>
@@ -409,7 +423,7 @@ function f(x, y, ...args){
 f(1, 2, 3, 4) // 1 2 [3, 4]
                             </code></pre>
                         </div>
-                    </section>                    
+                    </section>
                 </section>
 
                 <section>
@@ -418,8 +432,81 @@ f(1, 2, 3, 4) // 1 2 [3, 4]
                     </section>
                     <section>
                         <pre><code class="js" data-trim>
-                        </code></pre>                        
-                    </section>                    
+let list = [2,4,6,8];
+
+let fn = function(a, b, c, d) {
+    console.log(a, b, c, d);
+}
+                        </code></pre>
+
+                        <div class="fragment">
+                            <p>ES5</p>
+                            <pre><code class="js" data-trim data-noescape>
+fn(list[0], list[1], list[2], list[3]);
+<span class="fragment">
+fn.apply(null, list);
+</span>
+                            </code></pre>
+                        </div>
+
+                        <div class="fragment">
+                            <p>ES6</p>
+                            <pre class="fragment"><code class="js" data-trim>
+fn(...list);
+                            </code></pre>
+                        </div>
+                    </section>
+                    <section>
+                            <pre><code class="js" data-trim data-noescape>
+let arr1 = [1,2,3];
+let arr2 = [4,5,6];
+<span class="fragment">
+// arr1.push(v1, v2, v3);
+</span>
+<span class="fragment">
+arr1.push(...arr2);
+</span>
+
+                            </code></pre>
+                    </section>
+
+                    <section>
+                            <pre><code class="js" data-trim data-noescape>
+let arr1 = [3, 4];
+let arr2 = [1, ...arr1, 5, 6, 7]; // [1, 3, 4, 5, 6, 7]
+                            </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Rest & Spread Properties</h2>
+                    </section>
+                    <section>
+                        <p>Rest properties</p>
+                        <pre><code class="js" data-trim data-noescape>
+let myObj = {
+    x: 1,
+    y: 2,
+    a: 3,
+    b: 4
+};
+
+let {x, y<span class="fragment">, ...z</span>} = myObj;
+
+console.log(x); // 1
+console.log(y); // 2
+<span class="fragment">console.log(z); // { a: 3, b: 4 }</span>
+                        </code></pre>
+
+                        <div class="fragment">
+                            <p>Spread properties</p>
+                            <pre><code class="js" data-trim data-noescape>
+let n = {x, y<span class="fragment">, ...z</span>};
+console.log(n); // { x: 1, y: 2<span class="fragment">, a: 3, b: 4</span> }
+                            </code></pre>
+                        </div>
+                    </section>
                 </section>
 
                 <section>
@@ -427,10 +514,38 @@ f(1, 2, 3, 4) // 1 2 [3, 4]
                         <h2>Template Strings</h2>
                     </section>
                     <section>
-                        <pre><code class="js" data-trim>
-                        </code></pre>                        
-                    </section>                    
-                </section> 
+                        <div>
+                            <p>ES5</p>
+                            <pre><code class="js" data-trim>
+let multiLineText = "Line 1\nLine 2\nLine 3";
+console.log(multiLineText);
+// Line 1
+// Line 2
+// Line 3
+                            </code></pre>
+
+                            <pre class="fragment"><code class="js" data-trim>
+let multiLineText = "Line 1\n";
+multiLineText += "Line 2\n";
+multiLineText += "Line 3\n";
+                            </code></pre>
+                        </div>
+
+                        <div class="fragment">
+                            <p>ES6</p>
+                            <pre><code class="js" data-trim>
+let multiLineText = `Line1
+Line2
+line3
+`;
+                            </code></pre>
+
+                            <pre><code class="js" data-trim>
+let multiLineText = `string with ${variable}`;
+                            </code></pre>
+                        </div>
+                    </section>
+                </section>
 
                 <section>
                     <section>
@@ -438,9 +553,9 @@ f(1, 2, 3, 4) // 1 2 [3, 4]
                     </section>
                     <section>
                         <pre><code class="js" data-trim>
-                        </code></pre>                        
-                    </section>                    
-                </section>                                
+                        </code></pre>
+                    </section>
+                </section>
 
                 <section>
                     <section>
@@ -448,9 +563,9 @@ f(1, 2, 3, 4) // 1 2 [3, 4]
                     </section>
                     <section>
                         <pre><code class="js" data-trim>
-                        </code></pre>                        
-                    </section>                    
-                </section> 
+                        </code></pre>
+                    </section>
+                </section>
 
                 <section>
                     <section>
@@ -458,19 +573,19 @@ f(1, 2, 3, 4) // 1 2 [3, 4]
                     </section>
                     <section>
                         <pre><code class="js" data-trim>
-                        </code></pre>                        
-                    </section>                    
-                </section>   
-                
+                        </code></pre>
+                    </section>
+                </section>
+
                 <section>
                     <section>
                         <h2>Modules</h2>
                     </section>
                     <section>
                         <pre><code class="js" data-trim>
-                        </code></pre>                        
-                    </section>                    
-                </section>                                                
+                        </code></pre>
+                    </section>
+                </section>
             </div>
         </div>
 
@@ -489,7 +604,7 @@ f(1, 2, 3, 4) // 1 2 [3, 4]
                     secret: '14667310891079111022', // Obtained from the socket.io server. Gives this (the master) control of the presentation
                     id: '51f29a42717b8676', // Obtained from socket.io server
                     url: 'https://reveal-js-multiplex-ccjbegmaii.now.sh' // Location of socket.io server
-                },                
+                },
 
                 // More info https://github.com/hakimel/reveal.js#dependencies
                 dependencies: [
