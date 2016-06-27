@@ -34,10 +34,30 @@
                 </section>
 
                 <section>
-                    <h2 style="text-transform: inherit">ES6, ES7, ES2015, ES2016, ..., ES.Next...</h2>
-                    <p>WTF???</p>
-                    <p>Falar da ecma</p>
-                    <p><a href="https://www.wikiwand.com/en/Ecma_International">https://www.wikiwand.com/en/Ecma_International</a></p>
+                    <section>
+                        <h2 style="text-transform: inherit">ES6, ES7, ES2015, ES2016, ..., ES.Next...</h2>
+                        <p>WTF???</p>
+                    </section>
+
+                    <section>
+                        <img src="img/ecma.jpg" style="border: 0; box-shadow: none; display: block; margin: 0 auto">
+                        <ul style="font-size: 20px">
+                            <li>ECMA-107 - FAT12/FAT16 file system</li>
+                            <li>ECMA-119 – CD-ROM volume and filestructure</li>
+                            <li class="fragment highlight-current-blue">ECMA-262 – ECMAScript Language Specification</li>
+                            <li>ECMA-334 – C# Language Specification</li>
+                            <li>ECMA-335 – Common Language Infrastructure (CLI)</li>
+                            <li>ECMA-363 – Universal 3D File Format</li>
+                            <li>ECMA-372 – C++/CLI Language Specification</li>
+                            <li>ECMA-377 – Holographic Versatile Disc (HVD) Recordable Cartridges</li>
+                            <li>ECMA-378 – Read-Only Memory Holographic Versatile Disc (HVD-ROM)</li>
+                            <li>ECMA-388 – Open XML Paper Specification</li>
+                            <li>ECMA-404 – JSON</li>
+                            <li>ECMA-408 – Dart language specification</li>
+                            <li>...</li>
+                        </ul>
+                        <p style="font-size: 30px"><a href="http://www.ecma-international.org/publications/standards/Ecma-262.htm">http://www.ecma-international.org/publications/standards/Ecma-262.htm</a></p>
+                    </section>
                 </section>
 
                 <section>
@@ -45,8 +65,12 @@
                         <h2>Implementation Status</h2>
                         <p><a href="https://kangax.github.io/compat-table/es6/">https://kangax.github.io/compat-table/es6/</a></p>
                     </section>
-                    <section data-background-image="img/es_implementation.png">
-
+                    <section data-background-image="img/es_implementation.png"></section>
+                    <section data-background-image="img/babel.png"></section>
+                    <section>
+                        <h2>Babel</h2>
+                        <h3>ES2015 and beyond</h3>
+                        <p>Babel has support for the latest version of JavaScript through syntax transformers. These plugins allow you to use new syntax, right now without waiting for browser support. Check out our ES2015 preset to get started.</p>
                     </section>
                 </section>
 
@@ -175,14 +199,16 @@ arr
 console.log(arr); // [3, 5]
                         </code></pre>
 
-                        <p>ES6</p>
-                        <pre><code class="js" data-trim>
+                        <div class="fragment">
+                            <p>ES6</p>
+                            <pre><code class="js" data-trim>
 let arr = [1, 2, 3, 4];
 arr
 .filter(i => i%2 === 0)
 .map(i => i+1);
 console.log(arr); // [3, 5]
-                        </code></pre>
+                            </code></pre>
+                        </div>
                     </section>
 
                     <section>
@@ -539,11 +565,26 @@ Line2
 line3
 `;
                             </code></pre>
-
-                            <pre><code class="js" data-trim>
-let multiLineText = `string with ${variable}`;
-                            </code></pre>
                         </div>
+                    </section>
+
+                    <section>
+                            <pre><code class="js" data-trim>
+let companyName = "iClinic";
+let companyLocation = "Ribeirão Preto";
+                            </code></pre>
+
+                            <pre class="fragment"><code class="js" data-trim>
+let companyInfo = "The location of " + companyName + " is " + companyLocation;
+
+console.log(companyInfo); // "The location of iClinic is Ribeirão Preto"
+                            </code></pre>
+
+                            <pre class="fragment"><code class="js" data-trim>
+let companyInfo = `The location of ${companyName} is ${companyLocation}`;
+
+console.log(companyInfo); // "The location of iClinic is Ribeirão Preto"
+                            </code></pre>
                     </section>
                 </section>
 
