@@ -602,8 +602,87 @@ console.log(companyInfo); // "The location of iClinic is Ribeirão Preto"
                     <section>
                         <h2>Classes</h2>
                     </section>
+
                     <section>
-                        <pre><code class="js" data-trim>
+                        <pre><code style="max-height: 100%" class="js" data-trim>
+function Box(name, w, h) {
+    this.name = name;
+    this.w = w;
+    this.h = h;
+}
+
+Box.prototype = {
+    setWidth: function(w) {
+        this.w = w;
+    },
+
+    setHeight: function(h) {
+        this.h = h;
+    }
+
+    getWidth: function() {
+        return this.w;
+    },
+
+    getHeight: function() {
+        return this.h;
+    }
+}
+
+let box1 = new Box("Box 1", 100, 200);
+box1.setWidth(300);
+box1.setHeight(100);
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code style="max-height: 100%" class="js" data-trim>
+class Box {
+    constructor(name, w, h) {
+        this.name = name;
+        this.w = w;
+        this.h = h;
+    }
+
+    set width(w) {
+        this.w = w;
+    }
+
+    get width() {
+        return this.w;
+    }
+
+    set height(h) {
+        this.h = h;
+    }
+
+    get height() {
+        return `box ${this.name} height: ${this.h}`;
+    }
+}
+let box1 = new Box("Box 1", 100, 200);
+box1.height = 300;
+console.log(box1.height) // "box Box 1 height: 300"
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code style="max-height: 100%" class="js" data-trim>
+class BoxWithColor extends Box {
+    constructor(name, color, w, h) {
+        super(name, w, h);
+        this.c = color;
+    }
+
+    set color(c) {
+        this.c = c;
+    }
+
+    get color() {
+        return this.c;
+    }
+}
+
+let box1 = new BoxWithColor("Box 1", "red", 100, 200);
                         </code></pre>
                     </section>
                 </section>
