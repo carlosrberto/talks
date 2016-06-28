@@ -69,6 +69,8 @@
                             <li>ECMAScript 5.1 - 2011</li>
                             <li>ECMAScript 6 - 2015</li>
                             <li>ECMAScript 7 - 2016</li>
+                            <li>ECMAScript 8 - 2017</li>
+                            <li>...</li>
                         </ul>
                     </section>
                 </section>
@@ -78,8 +80,14 @@
                         <h2>Implementation Status</h2>
                         <p><a href="https://kangax.github.io/compat-table/es6/">https://kangax.github.io/compat-table/es6/</a></p>
                     </section>
+
                     <section data-background-image="img/es_implementation.png"></section>
-                    <section data-background-image="img/babel.png"></section>
+
+                    <section>
+                        <img style="border-color: #ddd" src="img/babel.png" alt="">
+                        <img style="border-color: #ddd" src="img/webpack.png" alt="">
+                    </section>
+
                     <section>
                         <h2>Babel</h2>
                         <h3>ES2015 and beyond</h3>
@@ -172,6 +180,8 @@ let name = "João"; // Uncaught TypeError: Identifier 'age' has already been dec
                 <section>
                     <section>
                         <h2>Arrow Functions</h2>
+                        <p>Less verbose than traditional function expressions.</p>
+                        <p>Their this is picked up from surroundings (lexical)</p>
                     </section>
                     <section>
                         <pre><code class="js" data-trim>
@@ -235,14 +245,14 @@ function myFn() {
     console.log(this);
 }
                         </code></pre>
-                        <pre><code data-trim data-noescape>
+                        <pre class="fragment"><code data-trim data-noescape>
 
 let MyObject = {};
 let myFn2 = = <mark>$.proxy(myFn, MyObject);</mark>
 console.log(myFn2) // MyObject
                         </code></pre>
 
-                        <pre><code data-trim data-noescape>
+                        <pre class="fragment"><code data-trim data-noescape>
 
 function changeContext(fn, context) {
     return function() {
@@ -339,13 +349,14 @@ inputHandler.init();
                 <section>
                     <section>
                         <h2>Destructuring</h2>
+                        <p>A destructuring declaration creates multiple variables at once.</p>
                     </section>
                     <section>
                         <pre><code class="js" data-trim>
 let list = [1, 2];
                         </code></pre>
 
-                        <div>
+                        <div class="fragment">
                             <p>ES5</p>
                             <pre><code class="js" data-trim>
 let a = list[0];
@@ -584,20 +595,18 @@ line3
 
                     <section>
                             <pre><code class="js" data-trim>
-let companyName = "iClinic";
-let companyLocation = "Ribeirão Preto";
+let object = "book";
+let place = "table";
                             </code></pre>
 
                             <pre class="fragment"><code class="js" data-trim>
-let companyInfo = "The location of " + companyName + " is " + companyLocation;
-
-console.log(companyInfo); // "The location of iClinic is Ribeirão Preto"
+let text = "The " + object + " is on the " + place;
+console.log(text); // "The book is on the table"
                             </code></pre>
 
                             <pre class="fragment"><code class="js" data-trim>
-let companyInfo = `The location of ${companyName} is ${companyLocation}`;
-
-console.log(companyInfo); // "The location of iClinic is Ribeirão Preto"
+let companyInfo = `The ${object} is on the ${place}`;
+console.log(text); // "The book is on the table"
                             </code></pre>
                     </section>
                 </section>
@@ -931,12 +940,6 @@ Object.values(point); // [10, 20]
 
                 <section>
                     <h1>Obrigado!</h1>
-                    <p>
-                        <span style="display: inline-block;">
-                            <em style="display: block; padding-top: 100px;">"Seja a mudança que você quer ver no mundo"</em>
-                            <span style="display: block; text-align: right; font-size: 25px;">Mahatma Gandhi</span>
-                        </span>
-                    </p>
                 </section>
             </div>
         </div>
