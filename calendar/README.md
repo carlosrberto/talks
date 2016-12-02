@@ -1,5 +1,5 @@
-# JavaScript - Passado, Presente e Futuro
+# Agenda - Como criar uma
 
-O que há de novo no JavaScript (ES6, ES.Next)
+Explicações básicas e exemplo prático de como aplicar a lógica para criar interfaces
 
-[Veja os slides](http://carlosrberto.github.io/talks/javascript-next)
+[Veja os slides](http://carlosrberto.github.io/talks/calendar)
