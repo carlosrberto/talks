@@ -393,6 +393,34 @@
 17:20, 17:50, 18:20
                     </code></pre>
                 </section>
+
+                <section>
+                    <p>Traduzindo para uma pseudo-linguagem, serial algo como:</p>
+
+                    <pre><code>
+ENQUANTO: "a hora inicial for menor que a hora final"
+    SE: "a hora inicial estiver entre o horário inicial e final de almoço"
+        SALVE: "a hora inicial do almoço na lista"
+
+        ENQUANTO: "a hora inicial for menor que a hora final do almoço"
+            SOME: "hora inicial + 0:30"
+            SALVE: "o resultado na LISTA"
+
+        SALVE: "a hora final de almoço na lista"
+    SENÃO:
+        SOME: "hora inicial + 0:30"
+        SALVE: "o resultado na LISTA"
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p>Com essa lista de horas disponível, "<strong>dizemos</strong>" para a linguagem:</p>
+
+                    <pre><code>
+PARA_CADA: "hora na lista de horas"
+    RENDERIZE: "uma coluna"
+                    </code></pre>
+                </section>
             </div>
         </div>
 
